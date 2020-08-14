@@ -20,10 +20,8 @@
         clearButton.style = ("font-size: 30px; color: brown; position:fixed; margin-left:44%; top: 50px; width: 200px; height: 50px; justify-content: center;");
         clearButton.addEventListener('click', () => {
             let size = prompt("Enter the size of grid u want.");
-            document.querySelector('body').innerHTML = '';
-            const createDiv = document.createElement('div');
-            document.querySelector('body').appendChild(createDiv);
-            gridConstructor(size);
+            
+             currentGrid = gridConstructor(size);
 
         })
         document.querySelector('body').appendChild(clearButton);
@@ -53,7 +51,7 @@
             }
         }
 
-        gridConstructor(16);
+        let currentGrid = gridConstructor(16);
 
         function gridChildStyle(div) {
             div.style = " text-align:center; font-size: 40px;  background-color:yellow; ";
