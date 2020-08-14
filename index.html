@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Etch a Sketch</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="grid-container">
+
+    </div>
+
+    <script>
+        document.querySelector('body').style.backgroundColor = 'gray';
+
+
+        const clearButton = document.createElement('button');
+        clearButton.textContent = 'New Grid';
+        clearButton.style = ("font-size: 30px; color: brown; position:fixed; margin-left:44%; top: 50px; width: 200px; height: 50px; justify-content: center;");
+        clearButton.addEventListener('click', () => {
+            let size = prompt("Enter the size of grid u want.");
+            document.querySelector('body').innerHTML = '';
+            const createDiv = document.createElement('div');
+            document.querySelector('body').appendChild(createDiv);
+            gridConstructor(size);
+
+        })
+        document.querySelector('body').appendChild(clearButton);
+
+        function gridConstructor(size) {
+            const container = document.querySelector('div');
+            container.style.display = 'grid';
+            container.style.gridTemplateColumns = `repeat(${size},1fr)`;
+            container.style.width = '700px';
+            container.style.height = '700px';
+            container.style.justifyContent = 'center';
+            container.style.border = '4px solid black';
+            container.style.marginLeft = 'auto';
+            container.style.marginRight = 'auto';
+            container.style.marginTop = '10em';
+            container.style.gridGap = '5px';
+            container.style.backgroundColor = 'orange';
+            let divs = [];
+            for (let i = 1; i <= (size * size); i++) {
+                divs[i - 1] = document.createElement('div');
+                divs[i - 1].classList.add('grid-child');
+                gridChildStyle(divs[i - 1]);
+                divs[i - 1].addEventListener('mouseover', (e) => {
+                    e.target.style.backgroundColor = 'blue';
+                });
+                container.appendChild(divs[i - 1]);
+            }
+        }
+
+        gridConstructor(16);
+
+        function gridChildStyle(div) {
+            div.style = " text-align:center; font-size: 40px;  background-color:yellow; ";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
